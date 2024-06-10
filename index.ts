@@ -1,8 +1,13 @@
 const propertyContainer = document.querySelector('.properties') as HTMLElement
 const footer = document.querySelector('.footer') as HTMLElement
-import { showReviewTotal, populateUser, showDetails } from './utils'
+const reviewContainer = document.querySelector('.reviews') as HTMLElement
+const container = document.querySelector('.container') as HTMLElement
+const button = document.querySelector('button') as HTMLElement
+import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from './utils'
 import { Permissions, LoyaltyUser } from './enums'
 import { Price, Country } from './types'
+import { Review } from './interfaces'
+
 let isLoggedIn: boolean
 
 // Reviews
@@ -116,6 +121,23 @@ for (let i = 0; i < properties.length; i++) {
     showDetails(you.Permissions, card, properties[i].price)
     propertyContainer.appendChild(card)
 }
+
+let count = 0
+function addReviews(array: Review[]) : void {
+    if (!count ) {
+        count++
+        const topTwo = getTopTwoReviews(array)
+        for (let i = 0; i < topTwo.length; i++) {
+            const card = document.createElement('div')
+            card.classList.add('review-card')
+            card.innerHTML = topTwo[i].stars + ' stars from ' + topTwo[i].name
+            reviewContainer.appendChild(card)
+        }
+        container.removeChild(button) 
+    }
+}
+
+button.addEventListener('click', () => addReviews(reviews))
 
 let currentLocation: [string, string, number] = ['Rustenburg', '15:30', 19]
 footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2]
