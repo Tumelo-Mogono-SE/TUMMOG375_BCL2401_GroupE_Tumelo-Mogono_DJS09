@@ -142,7 +142,7 @@ function addReviews(array: Review[]) : void {
 button.addEventListener('click', () => addReviews(reviews))
 
 let currentLocation: [string, string, number] = ['Rustenburg', '15:30', 19]
-footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2]
+footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°'
 
 
 let yourMainProperty = new MainProperty(
