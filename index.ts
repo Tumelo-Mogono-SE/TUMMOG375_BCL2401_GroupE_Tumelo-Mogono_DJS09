@@ -1,6 +1,6 @@
 const propertyContainer = document.querySelector('.properties') as HTMLElement
 const footer = document.querySelector('.footer') as HTMLElement
-import { showReviewTotal, populateUser } from './utils'
+import { showReviewTotal, populateUser, showDetails } from './utils'
 import { Permissions, LoyaltyUser } from './enums'
 import { Price, Country } from './types'
 let isLoggedIn: boolean
@@ -104,13 +104,6 @@ let authorityStatus : any
 
 isLoggedIn = false
 
-function showDetails(authorityStatus: boolean | Permissions, element : HTMLDivElement, price: number) {
-    if (authorityStatus) {
-        const priceDisplay = document.createElement('div')
-        priceDisplay.innerHTML = price.toString() + '/night'
-        element.appendChild(priceDisplay)
-    }
- }
 
 // Add the properties
 for (let i = 0; i < properties.length; i++) {
