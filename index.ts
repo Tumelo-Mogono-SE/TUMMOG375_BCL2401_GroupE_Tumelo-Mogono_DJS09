@@ -1,12 +1,13 @@
+import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from './utils'
+import { Permissions, LoyaltyUser } from './enums'
+import { Price, Country } from './types'
+import { Review } from './interfaces'
 const propertyContainer = document.querySelector('.properties') as HTMLElement
 const footer = document.querySelector('.footer') as HTMLElement
 const reviewContainer = document.querySelector('.reviews') as HTMLElement
 const container = document.querySelector('.container') as HTMLElement
 const button = document.querySelector('button') as HTMLElement
-import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from './utils'
-import { Permissions, LoyaltyUser } from './enums'
-import { Price, Country } from './types'
-import { Review } from './interfaces'
+
 
 let isLoggedIn: boolean
 
@@ -99,6 +100,19 @@ const properties : Property[] = [
         },
         contact: [+34829374892553, 'andyluger@aol.com'],
         isAvailable: true
+    },
+    {
+        image: 'images/malaysian-hotel.jpeg',
+        title: 'Malia Hotel',
+        price: 35,
+        location: {
+            firstLine: 'Room 4',
+            city: 'Malia',
+            code: 45334,
+            country: 'Malaysia'
+        },
+        contact: [ +60349822083, 'lee34@gmail.com'],
+        isAvailable: false
     }
 ]
 
