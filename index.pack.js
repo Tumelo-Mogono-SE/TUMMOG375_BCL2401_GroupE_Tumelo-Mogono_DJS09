@@ -1,0 +1,2 @@
+(()=>{"use strict";var e,t,a=document.querySelector("#reviews"),r=[{name:"Sheia",stars:5,loyaltyUser:!0,date:"01-04-2021"},{name:"Andrzej",stars:3,loyaltyUser:!1,date:"28-03-2021"},{name:"Omar",stars:4,loyaltyUser:!0,date:"27-03-2021"}];e=r.length,t=r[0].name,a.innerHTML="review total"+e.toString()+"| last review by"+t})();
+//# sourceMappingURL=index.pack.js.map
