@@ -1,7 +1,7 @@
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from './utils'
 import { Permissions, LoyaltyUser } from './enums'
-import { Price, Country } from './types'
-import { Review } from './interfaces'
+import { Review, Property } from './interfaces'
+import MainProperty from './classes'
 const propertyContainer = document.querySelector('.properties') as HTMLElement
 const footer = document.querySelector('.footer') as HTMLElement
 const reviewContainer = document.querySelector('.reviews') as HTMLElement
@@ -47,19 +47,6 @@ const you = {
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
-interface Property {
-    image: string;
-    title: string;
-    price: Price;
-    location: {
-        firstLine: string;
-        city: string;
-        code: number | string;
-        country: Country
-    }
-    contact: [ number, string]
-    isAvailable: boolean;
-}
 // Array of Properties
 const properties : Property[] = [
     {
@@ -157,17 +144,6 @@ button.addEventListener('click', () => addReviews(reviews))
 let currentLocation: [string, string, number] = ['Rustenburg', '15:30', 19]
 footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2]
 
-// Classes
-class MainProperty {
-    src: string
-    title: string
-    reviews: Review[]
-    constructor(src: string, title: string, reviews: Review[]) {
-        this.src = src
-        this.title = title
-        this.reviews = reviews
-    }
-}
 
 let yourMainProperty = new MainProperty(
     'images/italian-property.jpg', 
