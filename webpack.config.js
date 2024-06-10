@@ -1,9 +1,12 @@
+const path = require('path')
+
 module.exports = {
   "output": {
+    "path": path.resolve(__dirname),
     "filename": "[name].pack.js"
   },
   "entry": {
-    "index": "./index"
+    "index": "./index.ts"
   },
   "resolve": {
     "extensions": [
@@ -22,5 +25,6 @@ module.exports = {
         "test": /\.ts$/
       }
     ]
-  }
+  },
+  devtool: 'source-map'
 };
