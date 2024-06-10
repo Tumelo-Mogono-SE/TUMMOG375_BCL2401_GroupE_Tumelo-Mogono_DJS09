@@ -1,11 +1,11 @@
 const reviewTotalDisplay = document.querySelector('#reviews') as HTMLElement 
 const returningUserDisplay = document.querySelector('#returning-user') as HTMLElement
 const userNameDisplay = document.querySelector('#user') as HTMLElement
-import {LoyaltyUser} from './enums'
+import {LoyaltyUser, Permissions} from './enums'
 
 export function showReviewTotal (value: number, reviewer: string, isLoyalty: LoyaltyUser) {
     const iconDisplay = LoyaltyUser.GOLD_USER ? '⭐' : ''
-    reviewTotalDisplay.innerHTML = 'review total' + value.toString() + '| last review by' + reviewer + ' ' + iconDisplay
+    reviewTotalDisplay.innerHTML = value.toString()+ ' Review' + makeMultiple(value)+ ' | last review by' + reviewer + ' ' + iconDisplay
 }
 
 export function populateUser(isReturning : boolean, userName : string ) {
@@ -15,22 +15,17 @@ export function populateUser(isReturning : boolean, userName : string ) {
     userNameDisplay.innerHTML = userName
 }
 
-function add(firstValue : (number | string), secondValue: (number | string)) {
-    let result
-    if (typeof firstValue === 'number' && typeof secondValue === 'number') {
-        result = firstValue + secondValue
+export function showDetails(authorityStatus: boolean | Permissions, element : HTMLDivElement, price: number) {
+    if (authorityStatus) {
+        const priceDisplay = document.createElement('div')
+        priceDisplay.innerHTML = price.toString() + '/night'
+        element.appendChild(priceDisplay)
     }
-    if (typeof firstValue === 'string' && typeof secondValue === 'string') {
-        result = firstValue + ' ' + secondValue
-    }
-    if (typeof firstValue === 'number' && typeof secondValue === 'string') {
-        console.log('cannot perform this addition')
-    }
-    if (typeof firstValue === 'string' && typeof secondValue === 'number') {
-        console.log('cannot perform this addition')
-    }
-}
+ }
 
-const combinedReviews = add(5,1)
-const firstNameLastName = add('Ania', 'Kubow')
+export function makeMultiple(value: number) : string {
+    if (value > 1 || value == 0 ) {
+        return 's'
+    } else return ''
+}
 
