@@ -2,8 +2,9 @@ const propertyContainer = document.querySelector('.properties') as HTMLElement
 const footer = document.querySelector('.footer') as HTMLElement
 import { showReviewTotal, populateUser } from './utils'
 import { Permissions, LoyaltyUser } from './enums'
-let isOpen: boolean
+let isLoggedIn: boolean
 
+// Reviews
 const reviews : {
     name: string;
     stars: number;
@@ -39,6 +40,7 @@ const you = {
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
+// Array of Properties
 const properties : {
     image: string;
     title: string;
@@ -93,10 +95,21 @@ const properties : {
     }
 ]
 
+// Functions
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
-
 populateUser(you.isReturning, you.firstName)
 
+let authorityStatus : any
+
+function showDetails(authorityStatus: any, element : HTMLDivElement, price: number) {
+    if (authorityStatus) {
+        const priceDisplay = document.createElement('div')
+        priceDisplay.innerHTML = price.toString() + '/night'
+        element.appendChild(priceDisplay)
+    }
+ }
+
+// Add the properties
 for (let i = 0; i < properties.length; i++) {
     const card = document.createElement('div')
     card.classList.add('card')
