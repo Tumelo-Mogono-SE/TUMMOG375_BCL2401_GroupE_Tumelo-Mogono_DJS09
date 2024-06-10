@@ -101,7 +101,9 @@ populateUser(you.isReturning, you.firstName)
 
 let authorityStatus : any
 
-function showDetails(authorityStatus: any, element : HTMLDivElement, price: number) {
+isLoggedIn = false
+
+function showDetails(authorityStatus: boolean | Permissions, element : HTMLDivElement, price: number) {
     if (authorityStatus) {
         const priceDisplay = document.createElement('div')
         priceDisplay.innerHTML = price.toString() + '/night'
@@ -117,6 +119,7 @@ for (let i = 0; i < properties.length; i++) {
     const image = document.createElement('img')
     image.setAttribute('src', properties[i].image)
     card.appendChild(image)
+    showDetails(you.Permissions, card, properties[i].price)
     propertyContainer.appendChild(card)
 }
 
