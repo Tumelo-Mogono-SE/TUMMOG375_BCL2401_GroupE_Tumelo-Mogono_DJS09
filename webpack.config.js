@@ -2,11 +2,11 @@ const path = require('path')
 
 module.exports = {
   "output": {
-    "path": path.resolve(__dirname),
+    "path": path.resolve(__dirname, 'dist'),
     "filename": "[name].pack.js"
   },
   "entry": {
-    "index": "./index.ts"
+    "index": "./src/index.ts"
   },
   "resolve": {
     "extensions": [
@@ -25,6 +25,13 @@ module.exports = {
         "test": /\.ts$/
       }
     ]
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname),
+    },
+    compress: true,
+    port: 8080,
   },
   devtool: 'source-map'
 };
